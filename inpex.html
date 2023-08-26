@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;600&family=Reem+Kufi:wght@500&family=Tajawal:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>CRODS</title>
@@ -18,18 +21,16 @@
         </div>
 
         <div class="inputs">
-        <input placeholder="Title" type="text" id="title">
+        <input placeholder="إسم المنتج" type="text" id="title">
 
         <div class="price">
-            <input  onkeyup="getTotal()" type="number" placeholder="price" id="price">
-            <input  onkeyup="getTotal()" type="number" placeholder="taxes" id="taxes">
-            <input  onkeyup="getTotal()" type="number" placeholder="ads" id="ads">
-            <input  onkeyup="getTotal()" type="number" placeholder="discount" id="discount">
+            <input  onkeyup="getTotal()" type="number" placeholder="السعر" id="price">
             <small id="total"></small>
+            <input type="text" placeholder="التاريخ" style="width: 95%; text-align: center; color: #fff;" id="data">
         </div>
-        <input type="number" placeholder="count" id="count">
-        <input type="text" placeholder="category" id="category">
-        <button  id="submit">Create</button>
+        <input type="number" placeholder="عدد المنتجات" id="count">
+        <input type="text" placeholder="الملاحظات" id="category">
+        <button  id="submit">إنشاء</button>
       
         
         </div>
@@ -44,6 +45,7 @@
 
                 </div>
             </div>
+        </div>
             <div class="PRICEALL">
                 
             </div>
@@ -54,21 +56,19 @@
           <table>
               <tr> 
                     <th >id</th>
-                    <th>title</th>
-                    <th>price</th>
-                    <th>taxes</th>
-                    <th>ads</th>
-                    <th>discount</th>
+                    <th>اسم المنتج</th>
+                    <th>السعر</th>
                     <th>total</th>
-                    <th>category</th>
-                    <th>update</th>
-                    <th>Dalete</th>
+                    <th>الملاحظات</th>
+                    <th>التاريخ</th>
+                    <th>تعديل</th>
+                    <th>حذف</th>
                 </tr>
             <tbody id="tbody">
               
             </tbody>
           </table>
-        </div>
+        
 
 
     </div>
