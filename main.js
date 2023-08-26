@@ -9,6 +9,9 @@ let submit = document.getElementById("submit")
 let total = document.getElementById("total");
 let mood = "Create";
 let tmp;
+let data = document.getElementById("data");
+data.value = DATA();
+
 
 
 
@@ -19,7 +22,7 @@ let tmp;
 function getTotal() {
 
   if (price.value != "") {
-    total.innerText = (+price.value + +taxes.value + +ads.value) - +discount.value;
+    total.innerText = price.value;
     total.style.background = "green";
   } else {
     total.innerText = "";
@@ -45,11 +48,9 @@ if (localStorage.getItem("prudect") != null) {
 submit.onclick = () => {
   let newPro = {
     title: title.value,
-    price: price.value,
-    taxes: taxes.value,
-    ads: ads.value,
-    discount: discount.value,
+    price:price.value,
     total: total.innerText,
+    data:data.value,
     count: count.value,
     category: category.value
   }
@@ -86,10 +87,8 @@ ShowData()
 function claerInput() {
   title.value = ""
   price.value = ""
-  taxes.value = ""
-  ads.value = ""
-  discount.value = ""
   total.innerText = ""
+  data.value = DATA();
   count.value = ""
   category.value = ""
 }
@@ -107,13 +106,11 @@ function ShowData() {
     <td>${i}</td>
     <td>${dataPro[i].title}</td>
     <td>${dataPro[i].price}</td>
-    <td>${dataPro[i].taxes}</td>
-    <td>${dataPro[i].ads}</td>
-    <td>${dataPro[i].discount}</td>
     <td>${dataPro[i].total}</td>
     <td>${dataPro[i].category}</td>
-    <td><button onclick="Update(${i})" id="update">update</button></td>
-    <td><button onclick="Delete(${i})" id="delete">Dalete</button></td>
+    <td>${dataPro[i].data}</td>    
+    <td><button onclick="Update(${i})" id="update">تعديل</button></td>
+    <td><button onclick="Delete(${i})" id="delete">حذف</button></td>
   </tr>
     `
     let num = 0;
@@ -143,6 +140,8 @@ ShowData();
 
 function Delete(i) {
   dataPro.splice(i, 1);
+  PRICEall.splice(i , 1);
+  localStorage.PRICE = JSON.stringify(PRICEall);
   localStorage.prudect = JSON.stringify(dataPro);
   ShowData();
 }
@@ -151,6 +150,7 @@ function Delete(i) {
 function deleteAll() {
   localStorage.clear();
   dataPro.splice(0)
+  PRICEall.splice(0);
   ShowData();
 }
 
@@ -162,13 +162,12 @@ function deleteAll() {
 function Update(i) {
   title.value = dataPro[i].title;
   price.value = dataPro[i].price;
-  taxes.value = dataPro[i].taxes;
-  ads.value = dataPro[i].ads
-  discount.value = dataPro[i].discount;
+  data.value = dataPro[i].data;
   count.style.display = "none";
   submit.innerHTML = "Update";
   category.value = dataPro[i].category;
   getTotal();
+  
   mood = "Update";
 
   scroll({
@@ -182,6 +181,21 @@ function PRICEALL(){
   ALL = PRICEall.reduce((x,y) => +x + +y );
  return ALL;
 }
+
+// data 
+
+function DATA(){
+  let data = new Date
+  let years = data.getFullYear();
+  let Month = data.getMonth();
+  let day = data.getDate();
+  let menuit = data.getMinutes();
+   return  `${years} / ${Month} / ${day}`;
+   
+   
+}
+
+DATA();
 
 
 
