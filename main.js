@@ -187,7 +187,7 @@ function PRICEALL(){
 function DATA(){
   let data = new Date
   let years = data.getFullYear();
-  let Month = data.getMonth();
+  let Month = data.getUTCMonth() + 1;
   let day = data.getDate();
   let menuit = data.getMinutes();
    return  `${years} / ${Month} / ${day}`;
